@@ -119,6 +119,8 @@ class DropdownMenu {
       const listItem = document.createElement('li');
       listItem.textContent = item;
 
+      listItem.addEventListener('click', () => {});
+
       menuList.append(listItem);
     });
 
@@ -135,6 +137,10 @@ class DropdownMenu {
 
   getMenuList() {
     return this.layout.querySelector('.dropdown-menu-list');
+  }
+
+  getMenuItems() {
+    return this.layout.querySelectorAll('li');
   }
 }
 

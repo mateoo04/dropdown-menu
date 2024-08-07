@@ -4,7 +4,7 @@
 
 :root {
   --primary-color: #f5f7f7;
-  --secondary-color: #32b1e3;
+  --secondary-color: #2a2e30;
 }
 
 /*Default styles*/
@@ -63,7 +63,7 @@ ul {
   list-style-type: none;
   text-wrap: nowrap;
   margin: 8px 0;
-  padding: 2px 3px;
+  padding: 0px 3px;
 }
 
 li {
@@ -71,7 +71,7 @@ li {
   width: 100%;
   padding: 3px 18px;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 li:hover {
