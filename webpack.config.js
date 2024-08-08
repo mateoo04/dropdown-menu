@@ -5,12 +5,6 @@ const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: './src/index.html',
-  //     filename: 'index.html',
-  //   }),
-  // ],
   module: {
     rules: [
       {
@@ -31,8 +25,8 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: 'production',
+  devtool: false,
   devServer: {
     static: './dist',
     watchFiles: ['src/*.*'],

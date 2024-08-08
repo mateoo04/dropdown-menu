@@ -5,8 +5,8 @@ import ellipsisVerticalIcon from './ellipsis-vertical-solid.svg';
 
 export default class DropdownMenu {
   /* menuTitle - text on menu button
-  color - background of the menu
-  items - array with */
+  items - array with menu items
+  iconType - type of icon in the button: arrow/ellipsis-vertical/ellipsis-horizontal*/
   constructor(menuTitle, items, iconType) {
     this.menuTitle = menuTitle;
     this.items = items;
@@ -147,30 +147,3 @@ export default class DropdownMenu {
     return this.layout.querySelectorAll('li');
   }
 }
-
-const dropdownMenu1 = new DropdownMenu(
-  'Categories',
-  ['Jackets', 'Hoodies', 'T-Shirts', 'Shoes'],
-  'arrow',
-  '#7cc3f2',
-  '#6dbdf2',
-  'red'
-);
-
-const dropdownMenu2 = new DropdownMenu(
-  '',
-  ['Replace', 'Edit', 'Delete'],
-  'ellipsis-horizontal',
-  'blue',
-  'green',
-  'red'
-);
-
-const dropdownMenu3 = new DropdownMenu(
-  '',
-  ['Change color', 'Bold', 'Italic', 'Underline'],
-  'ellipsis-vertical',
-  'red',
-  'pink',
-  'red'
-);
