@@ -1,8 +1,12 @@
 {
-  "name": "dropdown-menu",
-  "version": "1.0.0",
+  "name": "@matteo4/dropdown-menu",
+  "version": "1.0.1",
   "description": "Module contains a class DropdownMenu which enables fast creation of a dropdown menu with tree types of show/hide menu buttons.",
-  "private": true,
+  "private": false,
+  "main": "./src/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",

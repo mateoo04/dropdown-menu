@@ -1,6 +1,9 @@
 import './style.css';
+import arrowIcon from './chevron-down-solid.svg';
+import ellipsisHorizontalIcon from './ellipsis-solid.svg';
+import ellipsisVerticalIcon from './ellipsis-vertical-solid.svg';
 
-class DropdownMenu {
+export default class DropdownMenu {
   /* menuTitle - text on menu button
   color - background of the menu
   items - array with */
@@ -63,57 +66,56 @@ class DropdownMenu {
   }
 
   #setUpMenu() {
-    const template = document.querySelector('template');
+    console.log('07/08 23:33 version');
 
-    //copying the template
-    const clone = document.importNode(template.content, true);
+    //creating HTML elements
+    const menuContainer = document.createElement('div');
 
-    const menu = clone.querySelector('.dropdown-menu-list');
-    const menuButton = clone.querySelector('.dropdown-menu-button');
+    const menu = document.createElement('div');
+    menu.classList.add('dropdown-menu-list');
+
+    const menuButton = document.createElement('div');
+    menuButton.classList.add('dropdown-menu-button');
+
+    const menuTitle = document.createElement('div');
+    menuTitle.classList.add('menu-title');
+    menuButton.append(menuTitle);
+
+    const menuList = document.createElement('ul');
+    menu.append(menuList);
 
     //customizing the menu
-    clone.querySelector('.menu-title').textContent = this.menuTitle;
+    menuTitle.textContent = this.menuTitle;
 
     //to remove the empty space before the icon that appears when there is no menu title
     if (this.menuTitle === '') {
-      menuButton.removeChild(clone.querySelector('.dropdown-menu-button p'));
+      menuButton.removeChild(menuTitle);
     }
 
-    const svg = clone.querySelector('svg');
-    const path = clone.querySelector('path');
+    const icon = document.createElement('img');
 
     switch (this.iconType) {
       case 'arrow':
-        svg.setAttribute('viewBox', '0 0 512 512');
-        path.setAttribute(
-          'd',
-          'M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'
-        );
+        icon.src = arrowIcon;
 
         this.#setUpArrowMenuVisibility(menu, menuButton);
+        icon.style.height = '18px';
         break;
       case 'ellipsis-vertical':
-        svg.setAttribute('viewBox', '0 0 128 512');
-        path.setAttribute(
-          'd',
-          'M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z'
-        );
-        svg.style.height = '20';
+        icon.src = ellipsisVerticalIcon;
+        icon.style.height = '22px';
 
         this.#setUpEllipsisMenuVisibility(menu, menuButton);
         break;
       case 'ellipsis-horizontal':
-        svg.setAttribute('viewBox', '0 0 448 512');
-        path.setAttribute(
-          'd',
-          'M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z'
-        );
+        icon.src = ellipsisHorizontalIcon;
+        icon.style.height = '22px';
 
         this.#setUpEllipsisMenuVisibility(menu, menuButton);
         break;
     }
 
-    const menuList = clone.querySelector('.dropdown-menu-list ul');
+    menuButton.append(icon);
 
     this.items.forEach((item) => {
       const listItem = document.createElement('li');
@@ -124,7 +126,9 @@ class DropdownMenu {
       menuList.append(listItem);
     });
 
-    this.layout = clone.querySelector('.dropdown-menu');
+    menuContainer.append(menuButton, menu);
+
+    this.layout = menuContainer;
   }
 
   getLayout() {
